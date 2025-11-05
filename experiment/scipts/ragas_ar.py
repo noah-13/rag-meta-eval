@@ -10,13 +10,13 @@ from sentence_transformers import SentenceTransformer
 
 
 class AnswerRelevanceEvaluator:
-    def __init__(self, model_id="meta-llama/Meta-Llama-3-8B-Instruct", strictness=3):
+    def __init__(self, model_id="meta-llama/Meta-Llama-3-8B-Instruct", device="cuda", strictness=3):
+        self.device = torch.device(device)
         self.tokenizer = AutoTokenizer.from_pretrained(model_id)
         self.model = AutoModelForCausalLM.from_pretrained(
             model_id,
-            device_map="auto",
-            torch_dtype=torch.float16,
-        )
+            torch_dtype=torch.float16
+        ).to(self.device)
         self.model.eval()
         self.strictness = strictness
         self.embedder = SentenceTransformer("BAAI/bge-base-en-v1.5")
