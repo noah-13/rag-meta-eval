@@ -9,14 +9,15 @@ import re
 
 
 class FaithfulnessEvaluator:
-    def __init__(self, model_id="meta-llama/Meta-Llama-3-8B-Instruct"):
+    def __init__(self, model_id="meta-llama/Meta-Llama-3-8B-Instruct", device="cuda"):
+        self.device = torch.device(device)
         self.tokenizer = AutoTokenizer.from_pretrained(model_id)
         self.model = AutoModelForCausalLM.from_pretrained(
             model_id,
-            device_map="auto",
             torch_dtype=torch.float16
-        )
+        ).to(self.device)
         self.model.eval()
+
 
 
     def _generate(self, prompt: str, max_new_tokens: int):
