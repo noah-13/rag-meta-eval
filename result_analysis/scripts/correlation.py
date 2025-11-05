@@ -61,7 +61,6 @@ def evaluate_accuracy_by_prompt_variant(dim):
                         stats["correct"] += 1
                     stats["total"] += 1
 
-            # 选出 accuracy 最好的设定
             for range_str, stats in results[score_col][mode].items():
                 acc = stats["correct"] / stats["total"] * 100
                 if acc > best_accuracy:
