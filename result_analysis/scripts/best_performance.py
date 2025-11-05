@@ -1,3 +1,10 @@
+"""
+This script evaluates prompt variants for LLM scoring across three dimensions 
+(Answer Relevance, Faithfulness, Context Relevance). It compares model scores 
+(explicit_score, weighted_score, top1_score) with human-annotated answers to 
+find the best-performing mode (imperative or interrogative) and score range 
+for each dimension. Results are saved as summary CSV files.
+"""
 import pandas as pd
 
 # Dictionary to map dimensions to corresponding sheet names
