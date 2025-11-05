@@ -34,9 +34,19 @@ We assess both **pairwise accuracy** and **correlation with human judgments**, a
 │ ├── output/ # Analysis Results (CSV)</pre>
 
 ## 🚀 Run Experiments
+You can run individual metric evaluation scripts or reproduce all experiments at once.
+
+### ▶️ Run a Single Metric
 Navigate to experiment/scripts/ and run any of the metric scripts. Example:
 
 <pre> python ragas_ff.py --input_csv ../input/ff.csv --output_csv ../output/ragas_ff_output.csv </pre>
+### 🔁 Reproduce All Experiments
+
+Alternatively, you can use the provided run_exp.sh script to reproduce all experiments in one go:
+
+<pre> bash run_exp.sh </pre>
+
+This script sequentially executes all evaluation pipelines and saves their outputs under experiment/output/.
 
 ## 📌 Naming Conventions
 The files in follow the naming pattern:
