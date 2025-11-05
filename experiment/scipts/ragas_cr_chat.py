@@ -59,14 +59,14 @@ def safe_parse_json_list_with_error(output: str) -> tuple[list[str] | None, str]
 class EmbeddingContextRelevance:
     def __init__(self, model_id: str, device: str = "cuda"):
         self.tokenizer = AutoTokenizer.from_pretrained(model_id)
-        self.model = AutoModelForCausalLM.from_pretrained(model_id, device_map="auto", torch_dtype=torch.float16)
+        self.model = AutoModelForCausalLM.from_pretrained(model_id, torch_dtype=torch.float16).to(self.device)
         self.model.eval()
 
         self.spacy_nlp = English()
         self.spacy_nlp.add_pipe("sentencizer", config={"overwrite": True})
 
         self.embedder = SentenceTransformer("BAAI/bge-base-en-v1.5", device=device)
-        self.device = device
+        self.device = torch.device(device)        
         self.cutoff = 0.5
 
     def sent_tokenize(self, text: str) -> list[str]:
