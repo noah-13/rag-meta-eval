@@ -1,7 +1,6 @@
 import pandas as pd
 from scipy.stats import spearmanr, kendalltau
 
-# 数据维度及映射表
 DIMS = ["ar", "ff", "cr"]
 MODES = ["imperative", "interrogative"]
 SCORE_COLUMNS = ["explicit_score", "weighted_score", "top1_score"]
