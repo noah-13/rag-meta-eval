@@ -1,4 +1,4 @@
-# Meta-Evaluation of Reference-Free LLM Metrics for RAG
+# Meta-Evaluation of LLM-Based Reference-Free Metrics for RAG
 
 This repository contains the code and data used in the paper:
 
