@@ -1,3 +1,16 @@
+"""
+Faithfulness Evaluation Script (LLaMA-3)
+---------------------------------------
+This script evaluates the **faithfulness** of model-generated answers to their given contexts
+using a two-stage LLM-based pipeline:
+
+1. **Statement Extraction** – Rewrites each answer into atomic factual statements (JSON list).
+2. **Judgment** – Checks for each statement whether it can be directly inferred from the context.
+
+The script outputs per-sample faithfulness scores (mean of binary verdicts) and logs
+intermediate generations (statements, judge outputs, parse status, truncation flags).
+"""
+
 import pandas as pd
 import argparse
 from tqdm import tqdm
